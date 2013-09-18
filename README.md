@@ -64,7 +64,7 @@ The stream() callback receives a Stream-like EventEmitter:
 		});
 	});
 
-node-twitter also supports user and site streams:
+node-twitter also supports user, filter and site streams:
 
 	twit.stream('user', {track:'nodejs'}, function(stream) {
 		stream.on('data', function(data) {
