@@ -60,6 +60,19 @@ Note that all functions may be chained:
 			}
 		);
 
+#### Helper method for tweet with pictures
+
+	twit.uploadAndUpdate('Test tweet with pictures', [
+		{
+			buffer: fs.readFileSync '<your JPEG file>.jpg',
+			filename: 'test.jpg',
+			contentDisposition: 'file',
+			contentType: 'image/' + 'jpeg'
+		},...],
+		function(data) {
+			console.log(util.inspect(data))
+		});
+
 ### Search API (unstable, may change)
 
 	twit.search('nodejs OR #node', function(data) {
