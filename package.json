@@ -22,7 +22,8 @@
     "dependencies": {
         "oauth": ">=0.8.4",
         "cookies": ">=0.1.6",
-        "keygrip": ">=0.1.7"
+        "keygrip": ">=0.1.7",
+        "promise": ">=6.0.1"
     },
     "devDependencies": {
         "grunt": "~0.4.1",
