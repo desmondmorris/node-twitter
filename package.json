@@ -1,22 +1,35 @@
-{ "name": "twitter"
-, "version": "v0.2.2"
-, "description": "Twitter API client library for node.js"
-, "keywords": ["twitter","streaming","oauth"]
-, "homepage": "https://github.com/desmondmorris/node-twitter"
-, "author": "jdub, changes by desmondmorris"
-, "licenses":
-  [ { "type": "MIT"
-    , "url": "http://github.com/desmondmorris/node-twitter/raw/master/LICENSE"
-  } ]
-, "repository":
-  { "type": "git"
-  , "url": "https://github.com/desmondmorris/node-twitter"
-  }
-, "dependencies":
-  { "oauth": ">=0.8.4"
-  , "cookies": ">=0.1.6"
-  , "keygrip": ">=0.1.7"
-  }
-, "engines": ["node >=0.2.0"]
-, "main": "./lib/twitter"
+{
+    "name": "twitter",
+    "version": "v0.2.13",
+    "description": "Twitter API client library for node.js",
+    "keywords": [
+        "twitter",
+        "streaming",
+        "oauth"
+    ],
+    "homepage": "https://github.com/desmondmorris/node-twitter",
+    "author": "jdub, changes by desmondmorris",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://github.com/desmondmorris/node-twitter/raw/master/LICENSE"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/desmondmorris/node-twitter"
+    },
+    "dependencies": {
+        "oauth": ">=0.8.4",
+        "cookies": ">=0.1.6",
+        "keygrip": ">=0.1.7"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-release": "~0.6.0"
+    },
+    "engines": [
+        "node >=0.2.0"
+    ],
+    "main": "./lib/twitter"
 }

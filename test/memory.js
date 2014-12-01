@@ -35,4 +35,4 @@ var twit = new twitter({
 	stream.on('data', tweet);
 	// first report in 15 seconds
 	setTimeout(memrep, 15000);
-})
+});

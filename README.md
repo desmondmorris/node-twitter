@@ -26,12 +26,24 @@ It's early days for node-twitter, so I'm going to assume a fair amount of knowle
 		access_token_secret: 'STATE YOUR NAME'
 	});
 
+### Authenticate
+
+The format of this depends somewhat on how your routing works, but it should be clear enough.
+
+    app.get('/', twit.gatekeeper('/login'), routes.index);
+    app.get('/login', routes.login);
+    app.get('/twauth', twit.login());
+
+You'll need to create the routes for index & login. On the login page, you'll want a link like:
+
+    <a href="/twauth">Log in with Twitter</a>
+
 ### Basic OAuth-enticated GET/POST API (stable)
 
 The convenience APIs aren't finished, but you can get started with the basics:
 
-	twit.get('/statuses/show/27593302936.json', {include_entities:true}, function(data) {
-		console.log(util.inspect(data));
+	twit.get('/statuses/show/27593302936.json', {include_entities:true}, function(data, res) {
+		console.log(util.inspect(data), res.statusCode);
 	});
 
 ### REST API (unstable, may change)
@@ -74,13 +86,20 @@ node-twitter also supports user, filter and site streams:
 		setTimeout(stream.destroy, 5000);
 	});
 
-## Contributors
+new added events
 
-- [Jeff Waugh](https://github.com/jdub) (author)
-- [@technoweenie](https://github.com/technoweenie) (parser.js and, of course, twitter-node!)
-- Lots of [wonderful helper elves](https://github.com/desmondmorris/node-twitter/graphs/contributors) on GitHub
+this library now supports new added events which you can listen on.
 
-## TODO
-
-- Complete the convenience functions, preferably generated
-- Fix ALL THE THINGS! on the GitHub [issues list](https://github.com/desmondmorris/node-twitter/issues)
+`follow`
+`favorite`
+`unfavorite`
+`block`
+`unblock`
+`list_created`
+`list_destroyed`
+`list_updated`
+`list_member_added`
+`list_member_removed`
+`list_user_subscribed`
+`list_user_unsubscribed`
+`user_update`
