@@ -1,35 +1,47 @@
 {
-    "name": "twitter",
-    "version": "v0.2.9",
-    "description": "Twitter API client library for node.js",
-    "keywords": [
-        "twitter",
-        "streaming",
-        "oauth"
-    ],
-    "homepage": "https://github.com/desmondmorris/node-twitter",
-    "author": "jdub, changes by desmondmorris",
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "http://github.com/desmondmorris/node-twitter/raw/master/LICENSE"
-        }
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/desmondmorris/node-twitter"
-    },
-    "dependencies": {
-        "oauth": ">=0.8.4",
-        "cookies": ">=0.1.6",
-        "keygrip": ">=0.1.7"
-    },
-    "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-release": "~0.6.0"
-    },
-    "engines": [
-        "node >=0.2.0"
-    ],
-    "main": "./lib/twitter"
+  "name": "twitter",
+  "version": "v1.2.1",
+  "description": "Twitter API client library for node.js",
+  "keywords": [
+    "twitter",
+    "streaming",
+    "oauth"
+  ],
+  "homepage": "https://github.com/desmondmorris/node-twitter",
+  "author": "Desmond Morris <hi@desmondmorris.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/desmondmorris/node-twitter"
+  },
+  "scripts": {
+    "test": "npm run lint && mocha",
+    "lint": "jshint test/*.js lib/*.js && echo Lint passed."
+  },
+  "dependencies": {
+    "deep-extend": "^0.3.2",
+    "request": "^2.51.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0",
+    "mocha": "^2.1.0",
+    "nock": "^0.57.0"
+  },
+  "main": "./lib/twitter",
+  "jshintConfig": {
+    "boss": true,
+    "node": true,
+    "strict": true,
+    "newcap": false,
+    "undef": true,
+    "unused": true,
+    "onecase": true,
+    "lastsemic": true,
+    "indent": 2,
+    "globals": {
+      "escape": true,
+      "describe": true,
+      "it": true,
+      "before": true
+    }
+  }
 }
