@@ -100,6 +100,31 @@ client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
 });
 ```
 
+## User authentication
+
+Get authentication url:
+```javascript
+Twitter({
+    consumer_key: Twitter_Consumer_Key,
+    consumer_secret: Twitter_Consumer_Secret,
+    callback_url: 'http://127.0.0.1:8080'
+}).getAuthUrl(function(authData) {
+    //Forward user to authData['url'];
+    //Save secret, example: authenticating[authData['oauth_token']] = authData['oauth_token_secret'];
+});
+```
+
+Get auth_token and auth_secret:
+```javascript
+//Use the authSecret that you saved before...
+Twitter({
+    consumer_key: Twitter_Consumer_Key,
+    consumer_secret: Twitter_Consumer_Secret
+}).authenticate(req.query.oauth_token, authSecret, req.query.oauth_verifier, function(authData) {
+    //authData contains access_token_key and access_token_secret
+});
+```
+
 ## Examples
 
 * [Tweet](https://github.com/desmondmorris/node-twitter/tree/master/examples#tweet)
