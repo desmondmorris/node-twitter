@@ -32,7 +32,11 @@ You will need valid Twitter developer credentials in the form of a set of consum
 
 ```javascript
 var Twitter = require('twitter');
+```
 
+## For User based authetication:
+
+```javascript
 var client = new Twitter({
   consumer_key: '',
   consumer_secret: '',
@@ -51,6 +55,31 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 ```
+## For Application Only based authetication:
+
+You will need to fetch a bearer token from Twitter as documented [Here](https://dev.twitter.com/oauth/application-only), once you have it you can use it as follows.
+
+```javascript
+var client = new Twitter({
+  consumer_key: '',
+  consumer_secret: '',
+  bearer_token: ''
+});
+```
+
+Add your credentials accordingly.  I would use environment variables to keep your private info safe.  So something like:
+
+```javascript
+var client = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  bearer_token: process.env.TWITTER_BEARER_TOKEN,
+});
+```
+
+NB - You will not have access to all endpoints whilst using Application Only authentication, but you will have access to higher API limits.
+
+## Requests
 
 You now have the ability to make GET and POST requests against the API via the convenience methods.
 
