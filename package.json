@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "deep-extend": "^0.3.2",
+    "oauth": "^0.9.12",
     "request": "^2.51.0"
   },
   "devDependencies": {
