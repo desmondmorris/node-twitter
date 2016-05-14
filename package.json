@@ -15,33 +15,17 @@
   },
   "scripts": {
     "test": "npm run lint && mocha",
-    "lint": "jshint test/*.js lib/*.js && echo Lint passed."
+    "lint": "eslint test/*.js lib/*.js"
   },
   "dependencies": {
     "deep-extend": "^0.3.2",
     "request": "^2.51.0"
   },
   "devDependencies": {
+    "eslint": "^2.10.0",
     "jshint": "^2.6.0",
     "mocha": "^2.1.0",
     "nock": "^0.57.0"
   },
-  "main": "./lib/twitter",
-  "jshintConfig": {
-    "boss": true,
-    "node": true,
-    "strict": true,
-    "newcap": false,
-    "undef": true,
-    "unused": true,
-    "onecase": true,
-    "lastsemic": true,
-    "indent": 2,
-    "globals": {
-      "escape": true,
-      "describe": true,
-      "it": true,
-      "before": true
-    }
-  }
+  "main": "./lib/twitter"
 }
