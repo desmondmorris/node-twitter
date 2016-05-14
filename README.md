@@ -118,6 +118,16 @@ client.post('statuses/update', {status: 'I Love Twitter'},  function(error, twee
 Using the `stream` convenience method, you to open and manipulate data via a stream piped directly from one of the streaming API's. Let's see who is talking about javascript:
 
 ```javascript
+var stream = client.stream('statuses/filter', {track: 'javascript'});
+stream.on('data', function(tweet) {
+  console.log(tweet.text);
+});
+
+stream.on('error', function(error) {
+  throw error;
+});
+
+// You can also get the stream in a callback if you prefer.
 client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
   stream.on('data', function(tweet) {
     console.log(tweet.text);
