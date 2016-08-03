@@ -184,7 +184,7 @@ describe('Twitter', function() {
         this.twitter = new Twitter();
       });
 
-      it('accepts a 2xx response', function(done) {
+      it('accepts any 2xx response', function(done) {
         var jsonResponse = {favorites: [] };
         this.nock.get(/.*/).reply(201, jsonResponse);
         this.twitter.__request('get', '/tweet', function(error, data, response){
@@ -195,9 +195,9 @@ describe('Twitter', function() {
         });
       });
 
-      it('errors on non 4xx or 5xx responses', function(done){
+      it('errors when there is an error object', function(done){
         var jsonResponse = {errors: ['nope']};
-        this.nock.get(/.*/).reply(403, jsonResponse);
+        this.nock.get(/.*/).reply(203, jsonResponse);
         this.twitter.__request('get', '/tweet', function(error, data, response){
           assert.deepEqual(error, ['nope']);
           assert.deepEqual(data, jsonResponse);
@@ -207,10 +207,30 @@ describe('Twitter', function() {
       });
 
       it('errors on bad json', function(done) {
-        this.nock.get(/.*/).reply(500, 'fail whale');
+        this.nock.get(/.*/).reply(200, 'fail whale');
         this.twitter.__request('get', '/tweet', function(error, data, response){
           assert(error instanceof Error);
           assert.equal(data, 'fail whale');
+          assert.notEqual(response, null);
+          done();
+        });
+      });
+
+      it('allows an empty response', function(done){
+        this.nock.get(/.*/).reply(201, '');
+        this.twitter.__request('get', '/tweet', function(error, data, response){
+          assert.equal(error, null);
+          assert.deepEqual(data, {});
+          assert.notEqual(response, null);
+          done();
+        });
+      });
+
+      it('errors when there is a bad http status code', function(done) {
+        this.nock.get(/.*/).reply(500, '{}');
+        this.twitter.__request('get', '/tweet', function(error, data, response){
+          assert(error instanceof Error);
+          assert.deepEqual(data, {});
           assert.notEqual(response, null);
           done();
         });
