@@ -6,8 +6,11 @@ module.exports = {
   parserOptions: {
     sourceType: 'script'
   },
+  extends: 'eslint:recommended',
   rules: {
+    'indent': [2, 2, {SwitchCase: 1 }],
     'brace-style': [2, "stroustrup", {'allowSingleLine': true} ],
+    'comma-dangle': [0],
     'complexity': [2, 32],
     'curly': 2,
     'eqeqeq': 2,
