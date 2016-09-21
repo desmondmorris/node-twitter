@@ -15,7 +15,7 @@ module.exports = {
     'curly': 2,
     'eqeqeq': 2,
     'max-depth': 2,
-    'max-statements': [2, 16],
+    'max-statements': [2, 17],
     'new-cap': 2,
     'no-caller': 2,
     'no-cond-assign': 2,
