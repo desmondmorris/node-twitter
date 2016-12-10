@@ -1,18 +1,18 @@
 {
-  "name": "twitter",
-  "version": "1.4.0",
-  "description": "Twitter API client library for node.js",
+  "name": "twitter-enhanced",
+  "version": "1.4.1",
+  "description": "Twitter API client library for node.js, enhanced with Stream API POST requests",
   "license": "MIT",
   "keywords": [
     "twitter",
     "streaming",
     "oauth"
   ],
-  "homepage": "https://github.com/desmondmorris/node-twitter",
-  "author": "Desmond Morris <hi@desmondmorris.com>",
+  "homepage": "https://github.com/gabfusi/node-twitter",
+  "author": "Gabriele Fusi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/desmondmorris/node-twitter"
+    "url": "https://github.com/gabfusi/node-twitter"
   },
   "scripts": {
     "test": "npm run lint && mocha",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "deep-extend": "^0.4.1",
-    "request": "^2.72.0"
+    "request": "^2.75.0"
   },
   "devDependencies": {
     "eslint": "^3.12.0",

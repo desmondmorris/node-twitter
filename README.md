@@ -1,5 +1,10 @@
 # Twitter for Node.js
 
+
+This is a fork of [https://github.com/desmondmorris/node-twitter/](https://github.com/desmondmorris/node-twitter/).
+
+---
+
 An asynchronous client library for the Twitter [REST](https://dev.twitter.com/rest/public) and [Streaming](https://dev.twitter.com/streaming/overview) API's.
 
 [![Build Status](https://travis-ci.org/desmondmorris/node-twitter.svg?branch=master)](https://travis-ci.org/desmondmorris/node-twitter)
@@ -25,14 +30,14 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
 ## Installation
 
-`npm install twitter`
+`npm install twitter-enhanced`
 
 ## Quick Start
 
 You will need valid Twitter developer credentials in the form of a set of consumer and access tokens/keys.  You can get these [here](https://apps.twitter.com/).  Do not forgot to adjust your permissions - most POST request require write permissions.
 
 ```javascript
-var Twitter = require('twitter');
+var Twitter = require('twitter-enhanced');
 ```
 
 ## For User based authentication:
