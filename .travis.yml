@@ -1,6 +1,10 @@
 language: node_js
-node_js:
-  - 6.1
-  - 4.4
-  - 0.12
-  - 0.10
+matrix:
+  include:
+    - node_js: 7
+    - node_js: 6
+    - node_js: 4
+    - node_js: 0.12
+      script: mocha
+    - node_js: 0.10
+      script: mocha
