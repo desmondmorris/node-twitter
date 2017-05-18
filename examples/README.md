@@ -12,12 +12,12 @@
 ```javascript
 let data = [];
 const tweets = (params, max, callback) => {
-  client.get('statuses/user_timeline', params, (error, tweets, response) => {
+  client.get('statuses/user_timeline', params, (error, results, response) => {
     if (error) {
       return callback(error);
     }
     
-    data = data.concat(tweets);
+    data = data.concat(results);
     
     if(data.length <= max) {
       params.max_id = results.pop().id;
