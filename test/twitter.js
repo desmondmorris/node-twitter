@@ -21,6 +21,7 @@ describe('Twitter', function() {
         user_stream_base: 'https://userstream.twitter.com/1.1',
         site_stream_base: 'https://sitestream.twitter.com/1.1',
         media_base: 'https://upload.twitter.com/1.1',
+        post_method: null,
         request_options: {
           headers: {
             'Accept': '*/*',
