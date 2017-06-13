@@ -1,5 +1,5 @@
 # Examples
-
+* [User Timeline](#user-timeline)
 * [Tweet](#tweet)
 * [Retweet](#retweet)
 * [Search](#search)
@@ -7,6 +7,34 @@
 * [Proxy](#proxy)
 * [Media](#media)
 * [Chunked Media](#chunked-media)
+
+## User Timeline
+```javascript
+let data = [];
+const tweets = (params, max, callback) => {
+  client.get('statuses/user_timeline', params, (error, results, response) => {
+    if (error) {
+      return callback(error);
+    }
+    
+    data = data.concat(results);
+    
+    if(data.length <= max) {
+      params.max_id = results.pop().id;
+      return tweets(params, max, callback);
+    }
+    
+    return callback(error, data, response);
+  });
+}
+
+//Example
+tweets({screen_name: 'jack', count: 10}, 50, (error, tweets, response) => {
+  if (!error) {
+    console.log(tweets);
+  }
+});
+```
 
 ## Tweet
 
