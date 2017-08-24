@@ -162,6 +162,20 @@ client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
 });
 ```
 
+## Restricting Language
+
+```javascript
+var Twitter = require('twitter');
+
+var client = new Twitter({
+  consumer_key: '',
+  consumer_secret: '',
+  access_token_key: '',
+  access_token_secret: '',
+  language: 'en'
+});
+```
+
 **Note** twitter stream several types of events, see [the docs](https://dev.twitter.com/streaming/overview/messages-types) for more info. There is no canonical way of detecting tweets versus other messages, but some users have had success with the following strategy.
 
 ```javascript
