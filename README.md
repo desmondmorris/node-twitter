@@ -25,7 +25,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
 ## Installation
 
-`npm install twitter`
+`npm install twitter-lang`
 
 ## Quick Start
 
