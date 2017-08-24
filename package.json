@@ -1,18 +1,16 @@
 {
-  "name": "twitter",
-  "version": "1.7.1",
-  "description": "Twitter API client library for node.js",
+  "name": "twitter-lang",
+  "version": "0.0.2",
+  "description": "Twitter API client library for node.js, with language option",
   "license": "MIT",
   "keywords": [
-    "twitter",
-    "streaming",
-    "oauth"
+    "twitter"
   ],
-  "homepage": "https://github.com/desmondmorris/node-twitter",
-  "author": "Desmond Morris <hi@desmondmorris.com>",
+  "homepage": "https://github.com/andela-doladosu/node-twitter",
+  "author": "Tuvi <daradosu@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/desmondmorris/node-twitter"
+    "url": "https://github.com/andela-doladosu/node-twitter"
   },
   "scripts": {
     "test": "npm run lint && mocha",
