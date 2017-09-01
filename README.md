@@ -138,7 +138,7 @@ the fulfilled promise.  If you require this, please use the callback pattern.
 
 ## Streaming API
 
-Using the `stream` convenience method, you to open and manipulate data via a stream piped directly from one of the streaming API's. Let's see who is talking about javascript:
+Using the `stream` convenience method enables you to open and manipulate data via a stream piped directly from one of the streaming API's. Let's see who is talking about javascript:
 
 ```javascript
 var stream = client.stream('statuses/filter', {track: 'javascript'});
@@ -162,7 +162,7 @@ client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
 });
 ```
 
-**Note** twitter stream several types of events, see [the docs](https://dev.twitter.com/streaming/overview/messages-types) for more info. There is no canonical way of detecting tweets versus other messages, but some users have had success with the following strategy.
+**Note** Twitter streams emit several types of events. See [the docs](https://dev.twitter.com/streaming/overview/messages-types) for more info. There is no canonical way of detecting tweets versus other messages, but some users have had success with the following strategy:
 
 ```javascript
 _ = require('lodash')
