@@ -1,6 +1,6 @@
 {
   "name": "twitter",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Twitter API client library for node.js",
   "license": "MIT",
   "keywords": [
@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "eslint": "^3.12.0",
+    "mocha": "^3.4.0",
+    "eslint": "^4.4.0",
     "mocha": "^3.4.0",
     "nock": "^9.0.2"
   },
