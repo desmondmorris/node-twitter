@@ -124,7 +124,7 @@ The REST API convenience methods will also return Promises if:
 If those two conditions are met, the above example becomes:
 
 ```javascript
-client.post('statuses/update', {status: 'I Love Twitter'})
+client.post('statuses/update', {status: 'I Love Twitter', screen_name: 'username'})
   .then(function (tweet) {
     console.log(tweet);
   })
