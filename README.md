@@ -173,6 +173,21 @@ const isTweet = _.conforms({
 })
 ```
 
+## API errors
+
+Api errors are returned (with "catch" in the Promise api or with "err" param in the callback api) as an array of errors.
+Thus errors described in twitter docs for example as:
+```JSON
+ { "errors": [ { "code": 88, "message": "Rate limit exceeded" } ] } 
+
+```
+Would return as :
+
+```
+ [ { "code": 88, "message": "Rate limit exceeded" } ] 
+
+```
+
 ## Examples
 
 * [Tweet](https://github.com/desmondmorris/node-twitter/tree/master/examples#tweet)
