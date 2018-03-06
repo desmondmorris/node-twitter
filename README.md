@@ -90,6 +90,16 @@ client.post(path, params, callback);
 client.stream(path, params, callback);
 ```
 
+When the `post` convenience method is used to submit a JSON body, the `params` object must be structured as follows:
+
+```javascript
+{
+  json_body: {
+    // JavaSctript object to be submitted as JSON body
+  }
+}
+```
+
 ## REST API
 
 You simply need to pass the endpoint and parameters to one of convenience methods.  Take a look at the [documentation site](https://dev.twitter.com/rest/public) to reference available endpoints.
@@ -113,6 +123,28 @@ client.post('statuses/update', {status: 'I Love Twitter'},  function(error, twee
   console.log(response);  // Raw response object.
 });
 ```
+Example of POST with JSON body (new [direct_messages/events/new](https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/new-event) API):
+
+```javascript
+let params = {
+  json_body: {
+    event: {
+      type: 'message_create',
+      message_create: {
+        target: { recipient_id: '1234567890' },
+        message_data: { text: 'Hi there!' }
+      }
+    }
+  }
+};
+
+client.post('direct_messages/events/new', params, (error, result, response) => {
+  if (error) throw error;
+  console.log(result);  // Newly created event object.
+  console.log(response);  // Raw response object.
+});
+```
+
 
 ### Promises
 
