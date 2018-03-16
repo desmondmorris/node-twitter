@@ -1,3 +1,9 @@
+# DEPRECATED
+
+This repository has been unmaintained, is deprecated on npm, and should not be considered an authoritative source of anything. Sorry for the inconvenience.
+
+Instead try the current [twitter-lite](https://github.com/Preposterous/twitter-lite) library.
+
 # Twitter for Node.js
 
 An asynchronous client library for the Twitter [REST](https://dev.twitter.com/rest/public) and [Streaming](https://dev.twitter.com/streaming/overview) API's.
