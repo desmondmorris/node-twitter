@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "deep-extend": "^0.5.0",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "debug": "3.1.0"
   },
   "devDependencies": {
     "eslint": "^3.12.0",
