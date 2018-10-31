@@ -6,17 +6,17 @@ An asynchronous client library for the Twitter [REST](https://dev.twitter.com/re
  [![NPM](https://nodei.co/npm/twitter.png?mini=true)](https://nodei.co/npm/twitter/)
 
 ```javascript
-var Twitter = require('twitter');
+const Twitter = require('twitter');
 
-var client = new Twitter({
+const client = new Twitter({
   consumer_key: '',
   consumer_secret: '',
   access_token_key: '',
   access_token_secret: ''
 });
 
-var params = {screen_name: 'nodejs'};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
+const params = {screen_name: 'nodejs'};
+client.get('statuses/user_timeline', params, (error, tweets, response) => {
   if (!error) {
     console.log(tweets);
   }
@@ -32,13 +32,13 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 You will need valid Twitter developer credentials in the form of a set of consumer and access tokens/keys.  You can get these [here](https://apps.twitter.com/).  Do not forgot to adjust your permissions - most POST request require write permissions.
 
 ```javascript
-var Twitter = require('twitter');
+const Twitter = require('twitter');
 ```
 
 ## For User based authentication:
 
 ```javascript
-var client = new Twitter({
+const client = new Twitter({
   consumer_key: '',
   consumer_secret: '',
   access_token_key: '',
@@ -49,7 +49,7 @@ var client = new Twitter({
 Add your credentials accordingly.  I would use environment variables to keep your private info safe.  So something like:
 
 ```javascript
-var client = new Twitter({
+const client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
@@ -61,7 +61,7 @@ var client = new Twitter({
 You will need to fetch a bearer token from Twitter as documented [Here](https://dev.twitter.com/oauth/application-only), once you have it you can use it as follows.
 
 ```javascript
-var client = new Twitter({
+const client = new Twitter({
   consumer_key: '',
   consumer_secret: '',
   bearer_token: ''
@@ -71,7 +71,7 @@ var client = new Twitter({
 Add your credentials accordingly.  I would use environment variables to keep your private info safe.  So something like:
 
 ```javascript
-var client = new Twitter({
+const client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   bearer_token: process.env.TWITTER_BEARER_TOKEN
@@ -97,7 +97,7 @@ You simply need to pass the endpoint and parameters to one of convenience method
 Example, lets get a [list of favorites](https://dev.twitter.com/rest/reference/get/favorites/list):
 
 ```javascript
-client.get('favorites/list', function(error, tweets, response) {
+client.get('favorites/list', (error, tweets, response) => {
   if(error) throw error;
   console.log(tweets);  // The favorites.
   console.log(response);  // Raw response object.
@@ -107,7 +107,7 @@ client.get('favorites/list', function(error, tweets, response) {
 How about an example that passes parameters?  Let's  [tweet something](https://dev.twitter.com/rest/reference/post/statuses/update):
 
 ```javascript
-client.post('statuses/update', {status: 'I Love Twitter'},  function(error, tweet, response) {
+client.post('statuses/update', {status: 'I Love Twitter'}, (error, tweet, response) => {
   if(error) throw error;
   console.log(tweet);  // Tweet body.
   console.log(response);  // Raw response object.
@@ -125,10 +125,10 @@ If those two conditions are met, the above example becomes:
 
 ```javascript
 client.post('statuses/update', {status: 'I Love Twitter'})
-  .then(function (tweet) {
+  .then(tweet => {
     console.log(tweet);
   })
-  .catch(function (error) {
+  .catch(error => {
     throw error;
   })
 ```
@@ -141,22 +141,22 @@ the fulfilled promise.  If you require this, please use the callback pattern.
 Using the `stream` convenience method, you to open and manipulate data via a stream piped directly from one of the streaming API's. Let's see who is talking about javascript:
 
 ```javascript
-var stream = client.stream('statuses/filter', {track: 'javascript'});
-stream.on('data', function(event) {
+const stream = client.stream('statuses/filter', {track: 'javascript'});
+stream.on('data', event => {
   console.log(event && event.text);
 });
 
-stream.on('error', function(error) {
+stream.on('error', error => {
   throw error;
 });
 
 // You can also get the stream in a callback if you prefer.
 client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
-  stream.on('data', function(event) {
+  stream.on('data', event => {
     console.log(event && event.text);
   });
 
-  stream.on('error', function(error) {
+  stream.on('error', error => {
     throw error;
   });
 });
@@ -165,7 +165,7 @@ client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
 **Note** twitter stream several types of events, see [the docs](https://dev.twitter.com/streaming/overview/messages-types) for more info. There is no canonical way of detecting tweets versus other messages, but some users have had success with the following strategy.
 
 ```javascript
-_ = require('lodash')
+const _ = require('lodash')
 const isTweet = _.conforms({
   contributors: _.isObject,
   id_str: _.isString,
