@@ -6,13 +6,16 @@ module.exports = {
   parserOptions: {
     sourceType: 'script'
   },
+  extends: 'eslint:recommended',
   rules: {
+    'indent': [2, 2, {SwitchCase: 1 }],
     'brace-style': [2, "stroustrup", {'allowSingleLine': true} ],
-    'complexity': [2, 32],
+    'comma-dangle': [0],
+    'complexity': [2, 19],
     'curly': 2,
     'eqeqeq': 2,
     'max-depth': 2,
-    'max-statements': [2, 41],
+    'max-statements': [2, 20],
     'new-cap': 2,
     'no-caller': 2,
     'no-cond-assign': 2,
@@ -24,5 +27,8 @@ module.exports = {
     'space-before-function-paren': [2, 'never'],
     'strict': 2,
     'wrap-iife': [2, 'inside']
+  },
+  globals: {
+    'Promise': true
   }
 };

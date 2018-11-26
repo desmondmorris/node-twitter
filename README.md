@@ -2,7 +2,8 @@
 
 An asynchronous client library for the Twitter [REST](https://dev.twitter.com/rest/public) and [Streaming](https://dev.twitter.com/streaming/overview) API's.
 
-[![wercker status](https://app.wercker.com/status/624dbe8ad011852d1e01d7dc03941fc5/s/master "wercker status")](https://app.wercker.com/project/bykey/624dbe8ad011852d1e01d7dc03941fc5) [![NPM](https://nodei.co/npm/twitter.png?mini=true)](https://nodei.co/npm/twitter/)
+[![Build Status](https://travis-ci.org/desmondmorris/node-twitter.svg?branch=master)](https://travis-ci.org/desmondmorris/node-twitter)
+ [![NPM](https://nodei.co/npm/twitter.png?mini=true)](https://nodei.co/npm/twitter/)
 
 ```javascript
 var Twitter = require('twitter');
@@ -113,14 +114,36 @@ client.post('statuses/update', {status: 'I Love Twitter'},  function(error, twee
 });
 ```
 
+### Promises
+
+The REST API convenience methods will also return Promises if:
+
+1.  A callback is omitted
+2.  Promise's are available.
+
+If those two conditions are met, the above example becomes:
+
+```javascript
+client.post('statuses/update', {status: 'I Love Twitter'})
+  .then(function (tweet) {
+    console.log(tweet);
+  })
+  .catch(function (error) {
+    throw error;
+  })
+```
+
+Note, the raw `response` object returned by the Request module is not passed through
+the fulfilled promise.  If you require this, please use the callback pattern.
+
 ## Streaming API
 
 Using the `stream` convenience method, you to open and manipulate data via a stream piped directly from one of the streaming API's. Let's see who is talking about javascript:
 
 ```javascript
 var stream = client.stream('statuses/filter', {track: 'javascript'});
-stream.on('data', function(tweet) {
-  console.log(tweet.text);
+stream.on('data', function(event) {
+  console.log(event && event.text);
 });
 
 stream.on('error', function(error) {
@@ -129,14 +152,25 @@ stream.on('error', function(error) {
 
 // You can also get the stream in a callback if you prefer.
 client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
-  stream.on('data', function(tweet) {
-    console.log(tweet.text);
+  stream.on('data', function(event) {
+    console.log(event && event.text);
   });
 
   stream.on('error', function(error) {
     throw error;
   });
 });
+```
+
+**Note** twitter stream several types of events, see [the docs](https://dev.twitter.com/streaming/overview/messages-types) for more info. There is no canonical way of detecting tweets versus other messages, but some users have had success with the following strategy.
+
+```javascript
+_ = require('lodash')
+const isTweet = _.conforms({
+  contributors: _.isObject,
+  id_str: _.isString,
+  text: _.isString,
+})
 ```
 
 ## Examples
@@ -146,6 +180,7 @@ client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
 * [Streams](https://github.com/desmondmorris/node-twitter/tree/master/examples#streams)
 * [Proxy](https://github.com/desmondmorris/node-twitter/tree/master/examples#proxy)
 * [Media](https://github.com/desmondmorris/node-twitter/tree/master/examples#media)
+* [Chunked Media](https://github.com/desmondmorris/node-twitter/tree/master/examples#chunked-media)
 
 ## Contributors
 
