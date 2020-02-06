@@ -1,6 +1,6 @@
 # Twitter for Node.js
 
-An asynchronous client library for the Twitter [REST](https://dev.twitter.com/rest/public) and [Streaming](https://dev.twitter.com/streaming/overview) API's.
+An asynchronous client library for the Twitter [REST](https://dev.twitter.com/rest/public) and [Streaming](https://dev.twitter.com/streaming/overview) APIs.
 
 [![Build Status](https://travis-ci.org/desmondmorris/node-twitter.svg?branch=master)](https://travis-ci.org/desmondmorris/node-twitter)
  [![NPM](https://nodei.co/npm/twitter.png?mini=true)](https://nodei.co/npm/twitter/)
@@ -29,7 +29,7 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
 ## Quick Start
 
-You will need valid Twitter developer credentials in the form of a set of consumer and access tokens/keys.  You can get these [here](https://apps.twitter.com/).  Do not forgot to adjust your permissions - most POST request require write permissions.
+You will need valid Twitter developer credentials in the form of a set of consumer and access tokens/keys.  You can get these [here](https://apps.twitter.com/).  Do not forget to adjust your permissions - most POST request require write permissions.
 
 ```javascript
 var Twitter = require('twitter');
@@ -58,7 +58,7 @@ var client = new Twitter({
 ```
 ## For Application Only based authentication:
 
-You will need to fetch a bearer token from Twitter as documented [Here](https://dev.twitter.com/oauth/application-only), once you have it you can use it as follows.
+You will need to fetch a bearer token from Twitter as documented [here](https://dev.twitter.com/oauth/application-only). Once you have it you can use it as follows:
 
 ```javascript
 var client = new Twitter({
@@ -82,7 +82,7 @@ NB - You will not have access to all endpoints whilst using Application Only aut
 
 ## Requests
 
-You now have the ability to make GET and POST requests against the API via the convenience methods.
+You now have the ability to make GET and POST requests against the API via the convenience methods:
 
 ```javascript
 client.get(path, params, callback);
@@ -94,7 +94,7 @@ client.stream(path, params, callback);
 
 You simply need to pass the endpoint and parameters to one of convenience methods.  Take a look at the [documentation site](https://dev.twitter.com/rest/public) to reference available endpoints.
 
-Example, lets get a [list of favorites](https://dev.twitter.com/rest/reference/get/favorites/list):
+Example, let's get a [list of favorites](https://dev.twitter.com/rest/reference/get/favorites/list):
 
 ```javascript
 client.get('favorites/list', function(error, tweets, response) {
@@ -116,10 +116,10 @@ client.post('statuses/update', {status: 'I Love Twitter'},  function(error, twee
 
 ### Promises
 
-The REST API convenience methods will also return Promises if:
+The REST API convenience methods will also return promises if:
 
 1.  A callback is omitted
-2.  Promise's are available.
+2.  Promises are available
 
 If those two conditions are met, the above example becomes:
 
@@ -138,7 +138,7 @@ the fulfilled promise.  If you require this, please use the callback pattern.
 
 ## Streaming API
 
-Using the `stream` convenience method, you to open and manipulate data via a stream piped directly from one of the streaming API's. Let's see who is talking about javascript:
+Using the `stream` convenience method, you to open and manipulate data via a stream piped directly from one of the streaming APIs. Let's see who is talking about JavaScript:
 
 ```javascript
 var stream = client.stream('statuses/filter', {track: 'javascript'});
@@ -162,7 +162,7 @@ client.stream('statuses/filter', {track: 'javascript'}, function(stream) {
 });
 ```
 
-**Note** twitter stream several types of events, see [the docs](https://dev.twitter.com/streaming/overview/messages-types) for more info. There is no canonical way of detecting tweets versus other messages, but some users have had success with the following strategy.
+**Note** Twitter stream several types of events, see [the docs](https://dev.twitter.com/streaming/overview/messages-types) for more info. There is no canonical way of detecting tweets versus other messages, but some users have had success with the following strategy:
 
 ```javascript
 _ = require('lodash')
